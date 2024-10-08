@@ -12,12 +12,9 @@ def binsearch(arr: list, item):
     while not found and lbound <= ubound:
         index = (lbound + ubound) // 2
         if lbound == ubound:
-            if arr[lbound] == item: 
+            if arr[index] == item: 
                 found = True
                 print("Found here")
-                break
-            else:
-                break
         if arr[index] > item:
             ubound = index - 1
         if arr[index] < item:
