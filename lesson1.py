@@ -11,14 +11,16 @@ def binsearch(arr: list, item):
     found = False
     while not found and lbound <= ubound:
         index = (lbound + ubound) // 2
-        if lbound == ubound:
-            if arr[index] == item: 
-                found = True
-                print("Found here")
+        if arr[index] == item: 
+            found = True
+            print("Found here")
+            return found
         if arr[index] > item:
             ubound = index - 1
         if arr[index] < item:
             lbound = index + 1
+    print("not found")
+    return found
 
 
 def linear_search_while(arr: list, item):
@@ -50,11 +52,13 @@ def test_existsness(samples: int):
             no += 1
     print(f"In {samples} samples, {yes} match, {no} don't")
 def main():
+    narr = sorted(["A", "B", "C", "D", "E"])
     print("Hello world")
     array = generate_test_data(10, (0, 100))
     print(array)
     query = int(input("Your query for item: "))
-    binsearch(array, query)
+    qstring = input("String item: ")
+    binsearch(narr, query)
     found1 = linear_search(array, query)
     found2 = linear_search_while(array, query)
     if found1[0]:
