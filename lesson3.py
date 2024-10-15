@@ -15,9 +15,7 @@ def linsearch(myList: list, valueToFind: int):
     if found: print("VALUE FOUND!!!")
     else: print("OH NO ITEM NOT FOUND IN LIST!!")
 def main():
-    arr = generate_test_data(100, (0, 1000))
-    print(arr)
     inputFind = int(input("Value to find: "))
-    linsearch(arr, inputFind)
+    linsearch(generate_test_data(10, (0, 1000)), inputFind)
 if __name__ == "__main__":
     main()
