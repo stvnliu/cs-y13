@@ -2,9 +2,9 @@ import random
 def generate_test_data(length: int, _range: tuple):
     arr = []
     for i in range(length):
-        arr.append(random.randint(_range[0], _range[1]))
+        arr.append(random.randint(int(_range[0]), int(_range[1])))
     return arr
-def binsearch(arr: list, item):
+def binsearch(arr, item):
     arr = sorted(arr)
     print(arr)
     ubound, lbound = len(arr) - 1, 0

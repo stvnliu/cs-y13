@@ -33,30 +33,4 @@ names = [
 for name in names:
     new_list.insert(name)
 new_list.visualise()
-"""names = []
-ptrs = []
-l = 10
-for i in range(10):
-    names.append(None)
-    ptrs.append(i+1)
-ptrs[9] = -1
-sp = -1
-fp = 0
-print(names)
-print(ptrs)
-def insert_one(name):
-    global sp
-    global fp
-    global ptrs
-    global names
-    if fp == -1:
-        print("Not free")
-        return
-    names[fp] = name
-    ptrs[fp] = sp
-    sp = fp
-    fp = ptrs[fp]
-    print(names)
-    print(ptrs)
-insert_one("Steven")
-insert_one("Steven2")"""
+
