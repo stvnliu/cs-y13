@@ -4,7 +4,15 @@ rearPointer = -1
 queueLength = 0
 queueFull = 10
 def dequeue():
-    global queue, queueLength, queueFull, rearPointer
+    global queue, queueLength, queueFull, rearPointer, frontPointer
+    if queueLength == 0:
+        print("ERR:: Cannot dequeue an empty queue!") 
+        return
+    item = queue[frontPointer]
+    queue[frontPointer] = None
+    frontPointer += 1
+    print(f"Dequeued element {item}")
+    return
     
 def enqueue(item):
     global queue, queueLength, queueFull, rearPointer
@@ -21,3 +29,7 @@ def enqueue(item):
     return
 for i in range(13):
     enqueue(10 * i)
+dequeue()
+dequeue()
+dequeue()
+print(queue)
