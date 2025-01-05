@@ -27,7 +27,7 @@ def draw_underline(l: int):
 
 def test():
     range_end = 15
-    print(f"Printing series of factorias from 1 to {range_end}\n{draw_underline(20)}")
+    print(f"Printing series of factorials from 1 to {range_end}\n{draw_underline(20)}")
     for i in range(1, range_end):
         print(fact(i), end=", " if i < range_end-1 else "\n")
     fib_until = 15
