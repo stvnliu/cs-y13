@@ -3,7 +3,7 @@ class PolynomialTerm:
     def __init__(self):
         self.n = None
         self.p = None
-    def strexpr(self):
+    def __str__(self):
         return f"{self.n if self.n != 1 else ''}x^{self.p}"
     def fromexpr(self, txt: str):
         if txt[0] == 'x':
@@ -22,18 +22,23 @@ class PolynomialTerm:
 class Polynomial:
     def __init__(self):
         return
+    def _clean(self):
+        for i in range(len(self.terms)):
+            for j in range(i+1, len(self.terms) - 1):
+                if self.terms[i].p == self.terms[j].p:
+                    self.terms[i].n += self.terms[j].n
+                    del self.terms[j]
+        self.terms.sort(key=lambda x: x.p)
     def fromexpr(self, strexpr: str):
         #print(f"building with {strexpr}")
         self.terms = []
         for strterm in strexpr.split("+"):
-            #print(f"parsing {strterm}")
             t = PolynomialTerm()
             t.fromexpr(strterm)
-            #print(t.strexpr())
             self.terms.append(t)
-        self.terms.sort(key=lambda x: x.p)
-    def strexpr(self):
-        return "+".join(list(map(lambda term: term.strexpr(), self.terms)))
+        self._clean()
+    def __str__(self):
+        return "+".join(list(map(lambda term: str(term), self.terms)))
     def mul(self, other_poly):
         poly = Polynomial()
         ts = []
@@ -42,14 +47,9 @@ class Polynomial:
                 nt = PolynomialTerm()
                 nt.n = t1.n * t2.n
                 nt.p = t1.p + t2.p
-                add = True
-                for t in ts:
-                    if nt.p == t.p:
-                        t.n += nt.n
-                        add = False
-                if not add: continue
                 ts.append(nt)
         poly.terms = ts
+        poly._clean()
         return poly
 def test(limit: int):
     for i in range(10):
@@ -66,6 +66,6 @@ def test(limit: int):
             str2 += f"{random.randint(1, 10)}x^{random.randint(1, 10)}" + ("+" if i != n2-1 else "")
         p1.fromexpr(str1)
         p2.fromexpr(str2)
-        print(f"({p1.strexpr()}) * ({p2.strexpr()}) = {p1.mul(p2).strexpr()}")
+        print(f"({p1}) * ({p2}) = {p1.mul(p2)}")
 if __name__ == "__main__":
     test(3)
