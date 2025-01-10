@@ -1,6 +1,6 @@
 def fact(n: int): return n * fact(n-1) if n != 0 else 1
 
-def compound(p: float, r: float, y: int) -> float: 
+def compound(p: float, r: float, y: int) -> float:
     return p if y == 0 else compound(p*r, r, y-1)
 
 def print_fib(a, b, l):
@@ -9,7 +9,7 @@ def print_fib(a, b, l):
     print_next_fib(a, b, l-3)
 
 def print_next_fib(a: int, b: int, l: int):
-    if l == 0: 
+    if l == 0:
         print(a+b)
         return
     print(a+b)
