@@ -48,3 +48,4 @@ def payback(tuition: int, rate: int, salary: int):
 
 if __name__ == "__main__":
     test()
+
