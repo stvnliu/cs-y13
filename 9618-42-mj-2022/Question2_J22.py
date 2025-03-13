@@ -30,16 +30,34 @@ def OutputAllElements():
 OutputAllElements()
 
 # 2 c i
+
+# Bugfix included
+# Originally, was "if Upper >= Lower"
+# Does not work due to max recursion depth exceeding
+
 def BinarySearch(SearchArray: list, Lower: int, Upper: int, SearchValue: int) -> int:
-    if Upper >= Lower:
+    if Upper > Lower:
         Mid = (Lower + (Upper - 1)) // 2
         if SearchArray[0][Mid] == SearchValue:
             return Mid
         else:
             if SearchArray[0][Mid] > SearchValue:
+                print(f"Searching: {SearchArray[0][Lower:Mid-1]}")
+                input()
                 return BinarySearch(SearchArray, Lower, Mid - 1, SearchValue)
             else:
+                print(f"Searching: {SearchArray[0][Mid+1:Upper]}")
+                input()
                 return BinarySearch(SearchArray, Mid + 1, Upper, SearchValue)
+    elif Upper == Lower:
+        return -1 if SearchArray[0][Upper] != SearchValue else Upper 
     return -1
 
-BinarySearch(ArrayData,)
+# a value dynamically input by user, since ArrayData is randomly generated
+# target = int(input("Search for a value in first line of array: ")) 
+not_exists = -50 # a value that definitely does not exist in ArrayData
+
+find1 = BinarySearch(ArrayData, 0, 10, ArrayData[0][6])
+find2 = BinarySearch(ArrayData, 0, 10, not_exists)
+print(find1)
+print(find2)
