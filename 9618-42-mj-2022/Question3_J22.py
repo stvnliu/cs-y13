@@ -13,17 +13,20 @@ class Card:
 # 3 c
 TEXT_FILE_NAME = "CardValues.txt"
 cards = [None for i in range(30)] # type is Card, use NoneType to indicate empty
-with open(TEXT_FILE_NAME, "r") as file:
-    i = 0
-    j = 0
-    text_lines = file.readlines()
-    #print(text_lines)
-    while i < 30:
-        number = int(text_lines[j])
-        colour = text_lines[j+1]
-        cards[i] = Card(number, colour.strip())
-        i += 1
-        j += 2
+try:
+    with open(TEXT_FILE_NAME, "r") as file:
+        i = 0
+        j = 0
+        text_lines = file.readlines()
+        #print(text_lines)
+        while i < 30:
+            number = int(text_lines[j])
+            colour = text_lines[j+1]
+            cards[i] = Card(number, colour.strip())
+            i += 1
+            j += 2
+except IOError:
+    print("Cannot find file.")
 #print(cards)
 # 3 d
 selected_cards = [False for i in range(30)]

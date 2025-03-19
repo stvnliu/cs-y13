@@ -6,18 +6,7 @@ for i in range(10):
     for j in range(10):
         Row.append(random.randint(1, 100))
     ArrayData.append(Row)
-
-# 2 b i
 ArrayLength = 10
-for x in range(0, ArrayLength): # range() function excludes ArrayLength, so equiv to 0 -> ArrayLength - 1
-    for y in range(0, ArrayLength - 1): # range() function excludes ArrayLength, so equiv to 0 -> ArrayLength - 2
-        for z in range(0, ArrayLength - y - 1):
-            if ArrayData[x][z] > ArrayData[x][z+1]:
-                # swapping
-                tempValue = ArrayData[x][z]
-                ArrayData[x][z] = ArrayData[x][z+1]
-                ArrayData[x][z+1] = tempValue
-
 # 2 b ii
 def OutputAllElements():
     global ArrayData
@@ -26,6 +15,18 @@ def OutputAllElements():
         for j in range(0, ArrayLength):
             print(ArrayData[i][j], end=" ")
         print()
+print("before")
+OutputAllElements()
+# 2 b i
+for x in range(0, ArrayLength): # range() function excludes ArrayLength, so equiv to 0 -> ArrayLength - 1
+    for y in range(0, ArrayLength - 1): # range() function excludes ArrayLength, so equiv to 0 -> ArrayLength - 2
+        for z in range(0, ArrayLength - y - 1):
+            if ArrayData[x][z] > ArrayData[x][z+1]:
+                # swapping
+                tempValue = ArrayData[x][z]
+                ArrayData[x][z] = ArrayData[x][z+1]
+                ArrayData[x][z+1] = tempValue
+print("after")
 # 2 b iii
 OutputAllElements()
 
