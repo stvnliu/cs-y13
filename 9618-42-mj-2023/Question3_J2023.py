@@ -26,7 +26,7 @@ class Manager(Employee):
         self.__BonusValue: float = BonusValue # Real
     #3bii
     def SetPay(self, WeekNumber: int, NumberOfHoursWorked: float):
-        super().SetPay(WeekNumber, NumberOfHoursWorked * self.__BonusValue / 100)
+        super().SetPay(WeekNumber, NumberOfHoursWorked * (1 + self.__BonusValue / 100))
 #3c
 EMPLOYEE_FILENAME = "Employees.txt"
 global EmployeeArray
