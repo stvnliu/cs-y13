@@ -23,7 +23,41 @@ def Enqueue(NewRecord):
         Tail += 1
     else:
         Tail = 0
+    print(f"DEBUG Num={NumberOfItems}, Head={Head}, Tail={Tail}")
     return 1
+#2d
+def Dequeue():
+    global NumberOfItems, Head, Tail, CircularQueue
+    if NumberOfItems <= 0:
+        return SaleData(-1, "")
+    item = CircularQueue[Head]
+    NumberOfItems -= 1
+    if Head >= len(CircularQueue) - 1:
+        Head = 0
+    else:
+        Head += 1
+    print(f"DEBUG Num={NumberOfItems}, Head={Head}, Tail={Tail}")
+    return item
+#2e
+def EnterRecord(sale_id: str, quantity: int):
+    successfulness = Enqueue(SaleData(quantity, sale_id))
+    if successfulness == 1:
+        print("Stored")
+    elif successfulness == -1:
+        print("Full")
+#2fi
+IDs = ["ADF", "OOP", "BXW", "XXZ", "HQR", "LLP"]
+Quantities = [10, 1, 5, 22, 6, 3]
+for i in range(6):
+    EnterRecord(IDs[i], Quantities[i])
+item = Dequeue()
+if item.Quantity == -1: # null item
+    print("Error: Circular queue is empty")
+else:
+    print(f"ID={item.ID}, Quantity={item.Quantity}")
+EnterRecord("LLP", 3)
+for item in CircularQueue:
+    print(f"{item.ID} {item.Quantity}")
 # while True:
 #     Enqueue(SaleData(int(input("qty: ")), input("id: ")))
 #     if not input("c: "):
